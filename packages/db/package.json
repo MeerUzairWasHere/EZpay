@@ -8,6 +8,7 @@
       "prisma": "5.11.0"
   },
   "exports": {
-      "./client": "./index.ts"
+      "./client": "./index.ts",
+       ".": "./src/index.ts"
   }
 }
