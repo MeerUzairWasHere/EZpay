@@ -18,7 +18,7 @@ export default function Home() {
           <li>
             Get started by editing <code>app/page.tsx</code>
           </li>
-          <li>Save and see your changes instantly.</li>
+          <li>Merchant App</li>
         </ol>
 
         <div className={styles.ctas}>
