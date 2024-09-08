@@ -1,5 +1,5 @@
 {
-  "name": "EZpay",
+  "name": "ezpay",
   "private": true,
   "scripts": {
     "build": "turbo build",

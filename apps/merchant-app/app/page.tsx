@@ -1,10 +1,14 @@
+"use client";
+import { useBalance } from "@repo/store/useBalance";
 import Image from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
 
 export default function Home() {
+  const bal = useBalance();
   return (
     <div className={styles.page}>
+      Available Bal : {bal}
       <main className={styles.main}>
         <Image
           className={styles.logo}
