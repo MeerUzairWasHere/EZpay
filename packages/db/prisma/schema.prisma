@@ -21,13 +21,6 @@ model User {
   password String
 }
 
-model Merchant {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  auth_type AuthType
-}
-
 enum AuthType {
   Google
   Github
