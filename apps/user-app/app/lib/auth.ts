@@ -1,4 +1,5 @@
 import db from "@repo/db/client";
+import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 
@@ -10,10 +11,15 @@ export const authOptions = {
         phone: {
           label: "Phone number",
           type: "text",
-          placeholder: "8899123123",
+          placeholder: "Phone Number",
           required: true,
         },
-        password: { label: "Password", type: "password", required: true },
+        password: {
+          label: "Password",
+          placeholder: "Password",
+          type: "password",
+          required: true,
+        },
       },
       // TODO: User credentials type from next-aut
       async authorize(credentials: any) {
@@ -60,13 +66,16 @@ export const authOptions = {
         return null;
       },
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || " ",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
   ],
-  secret: process.env.JWT_SECRET || "secret",
+  secret: process.env.NEXTAUTH_SECRET || "secret",
   callbacks: {
     // TODO: can u fix the type here? Using any is bad
     async session({ token, session }: any) {
       session.user.id = token.sub;
-
       return session;
     },
   },
