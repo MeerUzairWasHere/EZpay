@@ -30,38 +30,42 @@ export const authOptions = {
             number: credentials.phone,
           },
         });
+        console.log("file: auth.ts:32 - credentials.phone:", credentials.phone);
+        console.log("file: auth.ts:32 - credentials.phone:", credentials.password);
+        console.log("file: auth.ts:33 - existingUser:", existingUser);
 
         if (existingUser) {
           const passwordValidation = await bcrypt.compare(
             credentials.password,
             existingUser.password
           );
+
           if (passwordValidation) {
             return {
               id: existingUser.id.toString(),
               name: existingUser.name,
-              email: existingUser.number,
+              number: existingUser.number,
             };
           }
           return null;
         }
 
-        try {
-          const user = await db.user.create({
-            data: {
-              number: credentials.phone,
-              password: hashedPassword,
-            },
-          });
+        // try {
+        //   const user = await db.user.create({
+        //     data: {
+        //       number: credentials.phone,
+        //       password: hashedPassword,
+        //     },
+        //   });
 
-          return {
-            id: user.id.toString(),
-            name: user.name,
-            email: user.number,
-          };
-        } catch (e) {
-          console.error(e);
-        }
+        //   return {
+        //     id: user.id.toString(),
+        //     name: user.name,
+        //     number: user.number,
+        //   };
+        // } catch (e) {
+        //   console.error(e);
+        // }
 
         return null;
       },

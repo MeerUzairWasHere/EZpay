@@ -2,6 +2,9 @@
   "name": "@repo/db",
   "version": "1.0.0",
   "main": "index.js",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "dependencies": {
     "@prisma/client": "^5.19.1"
   },
